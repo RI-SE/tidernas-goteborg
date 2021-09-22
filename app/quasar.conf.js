@@ -74,8 +74,8 @@ module.exports = configure(function (ctx) {
       },
       env: {
         API: ctx.dev
-          ? 'http://localhost:4000'
-          : 'http://bajskorv:4000'
+          ? 'https://tidernasgbg.testyta.se/api'
+          : 'https://tidernasgbg.testyta.se/api'
       }
     },
 
