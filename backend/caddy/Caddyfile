@@ -1,0 +1,14 @@
+tidernasgbg.testyta.se {
+    route {
+        
+        route /api* {
+            uri strip_prefix /api
+            reverse_proxy localhost:4000
+        }
+
+        root * /home/ubuntu/tidernas-goteborg/app/dist/spa
+        try_files {path} /index.html
+        file_server
+
+    }
+}
