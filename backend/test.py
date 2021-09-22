@@ -8,7 +8,7 @@ data = {
     "query": sys.argv[1],
     "results": [
         {
-            "id": "imgPath1"
+            "id": "imgPath123"
         },
         {
             "id":"imgPath2"
