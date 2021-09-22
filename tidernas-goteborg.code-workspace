@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "app"
+		},
+		{
+			"path": "backend"
+		}
+	],
+	"settings": {
+		"i18n-ally.localesPaths": [
+			"app/src/i18n"
+		]
+	}
+}
