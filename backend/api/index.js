@@ -4,6 +4,10 @@ const app = express()
 
 app.use(cors()); //Beware: CORS on all paths from all origins
 
+app.get('/hello', (req,res) => {
+    res.send('Heal the world!')
+})
+
 app.get('/', (req, res) => {
 
     //console.log(req)
