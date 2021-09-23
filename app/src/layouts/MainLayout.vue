@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="text-warning">
       <q-toolbar>
         <!--q-btn
           flat
@@ -12,9 +12,9 @@
         /-->
 
         <!--q-avatar icon="theaters" size="lg" color="white" text-color="primary"/-->
-        <q-icon name="image" size="lg" />
+        <!--q-icon name="image" size="lg" /-->
 
-        <q-toolbar-title>
+        <q-toolbar-title class="text-bold q-ml-md">
           Tidernas Göteborg
         </q-toolbar-title>
         <!--div>Quasar v{{ $q.version }}</div-->
