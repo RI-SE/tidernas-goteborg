@@ -13,7 +13,7 @@ app.use(cors()); //Beware: CORS on all paths from all origins
 // Set request rate limit
 const limiter = rateLimit({
     windowMs: 1 * 1000, // 15 minutes
-    max: 1 // limit each IP to 100 requests per windowMs
+    max: 3 // limit each IP to 100 requests per windowMs
 });
 app.use(limiter);
 app.use ((req,res, next) => {
