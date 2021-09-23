@@ -1,10 +1,13 @@
 <template>
   <div>
     <h2>Sök</h2>
-    <q-form @submit="runBackendScript">
-      <q-input label="Sökterm" v-model="query" clearable @focus="selectText"/>
-      <br/>
-      <q-btn type="submit" label="Sök" />
+    <q-form @submit="runBackendScript" class="row q-col-gutter-md">
+      <q-input label="Sökterm" v-model="query" clearable @focus="selectText" class="col">
+         <template v-slot:append>
+          <q-icon v-if="!query" name="search" />
+        </template>
+      </q-input>
+      <!--q-btn type="submit" label="Sök" /-->
     </q-form>
   </div>
 </template>

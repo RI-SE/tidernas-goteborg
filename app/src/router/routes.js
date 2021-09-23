@@ -7,19 +7,20 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') }
     ]
   },
-  {
+  /* {
     path: '/testapi',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/TestAPI.vue') }
     ]
-  },
+  }, */
 
   // Always leave this as last one,
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('pages/Error404.vue')
+    redirect: '/'
+    // component: () => import('pages/Error404.vue')
   }
 ]
 

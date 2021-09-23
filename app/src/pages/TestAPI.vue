@@ -1,8 +1,10 @@
 <template>
   <q-page class="row items-stretch">
-    <div class="col">
+    <div class="col" v-if="searchResponse">
       <SectionRow class="full-height">
         <SearchInput />
+        <h3>API Request URL (GET):</h3>
+        {{requrl}}
         <h3>API response:</h3>
         <pre>
           {{searchResponse}}
@@ -26,7 +28,10 @@ export default ({
     SearchInput
   },
   computed: {
-    ...mapState(['searchResponse'])
+    ...mapState(['searchResponse']),
+    requrl () {
+      return process.env.API + '?q=' + (this.searchResponse.query || '')
+    }
   },
   methods: {
   },

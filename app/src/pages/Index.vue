@@ -2,7 +2,7 @@
   <q-page class="row items-stretch">
     <div class="col-8">
       <SectionRow class="full-height">
-        <SearchInput />
+        <SearchInput class="q-mb-md"/>
         <SearchResult />
       </SectionRow>
     </div>
