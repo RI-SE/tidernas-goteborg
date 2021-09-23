@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row q-col-gutter-md">
-      <ItemPreview v-for="(item,i) in searchResponse.items" :item="item" :key="i" />
+      <ItemPreview v-for="(item,i) in searchResponse.items" :item="item" :key="i" class="col-xs-12 col-md-4" />
     </div>
   </div>
 </template>

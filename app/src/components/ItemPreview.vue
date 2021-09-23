@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-card>
+    <q-card class="text-black">
       <q-item>
         <q-icon name="star" @click="saveItem" :color="isSaved ? 'warning' : 'grey'" size="md" class="absolute-top-right save"/>
       </q-item>

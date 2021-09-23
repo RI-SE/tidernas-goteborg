@@ -1,12 +1,12 @@
 <template>
   <q-page class="row items-stretch">
-    <div class="col-8">
+    <div class="col-xs-12 col-md-8">
       <SectionRow class="full-height">
         <SearchInput class="q-mb-md"/>
         <SearchResult />
       </SectionRow>
     </div>
-    <div class="col-4">
+    <div class="col-xs-12 col-md-4">
       <SavedItems class="full-height"/>
     </div>
   </q-page>
