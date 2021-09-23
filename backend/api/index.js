@@ -68,14 +68,14 @@ function doSpawn (p) {
         const pyProg = spawn('python', ['api.py', p.req.query.q]);
 
         const timeout = setTimeout(function(){
-            console.log("TIMEOUT")
+            //console.log("TIMEOUT")
             pyProg.kill()
             p.res.sendStatus(500)
             reject()
         }, 15000);
 
         pyProg.stdout.on('data', function(data) {
-            console.log("DONE")
+            //console.log("DONE")
             clearTimeout(timeout)
             p.res.send(data)
             resolve(data);
