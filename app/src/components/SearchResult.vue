@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div v-if="isSearching" class="q-pt-md text-center">
+      <q-spinner-cube size="lg" color="primary" />
+    </div>
     <div v-if="searchResponse.query">
       <div class="row items-center">
         <h2>
@@ -67,7 +70,7 @@ export default ({
   props: {
   },
   computed: {
-    ...mapState(['searchResponse']),
+    ...mapState(['isSearching', 'searchResponse']),
     url () {
       return location.protocol + '//' + location.host + '?q=' + (this.searchResponse.query || '')
     }

@@ -22,6 +22,7 @@ export default store(function (/* { ssrContext } */) {
     // for dev mode and --debug builds only
     strict: process.env.DEBUGGING,
     state: {
+      isSearching: false,
       searchResponse: {},
       savedItems: []
     },
@@ -30,7 +31,6 @@ export default store(function (/* { ssrContext } */) {
         state[payload.key] = payload.value
       },
       addSavedItem: (state, payload) => {
-        console.log(payload.item)
         state.savedItems.push(payload.item)
         sessionStorage.setItem('savedItems', JSON.stringify(state.savedItems))
       },
@@ -48,6 +48,14 @@ export default store(function (/* { ssrContext } */) {
         if (savedItems) {
           ctx.commit('setState', { key: 'savedItems', value: savedItems })
         }
+      },
+      initSearch: (ctx, payload) => {
+        ctx.dispatch('clearResponse')
+        ctx.commit('setState', { key: 'isSearching', value: true })
+      },
+      setResponse: (ctx, payload) => {
+        ctx.commit('setState', { key: 'searchResponse', value: payload })
+        ctx.commit('setState', { key: 'isSearching', value: false })
       },
       clearResponse: (ctx) => {
         ctx.commit('setState', { key: 'searchResponse', value: {} })

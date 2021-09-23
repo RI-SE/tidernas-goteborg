@@ -40,8 +40,9 @@ export default ({
   },
   methods: {
     async runBackendScript () {
+      this.$store.dispatch('initSearch')
       const r = await backend.runBackendScript({ query: this.query })
-      this.$store.commit('setState', { key: 'searchResponse', value: r.data })
+      this.$store.dispatch('setResponse', r.data)
       // this.$router.replace({ query: { q: this.query } })
     },
     selectText (e) {
