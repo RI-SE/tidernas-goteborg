@@ -7,7 +7,7 @@
         </template>
       </q-input>
       <div class="text-center">
-        Developer test: <q-toggle v-model="queue" label="API kö aktiv"/>
+        <q-toggle v-model="queue" label="API kö test"/>
       </div>
       <!--q-btn type="submit" label="Sök" /-->
     </q-form>
