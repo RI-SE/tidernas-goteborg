@@ -2,7 +2,7 @@
   <div>
     <h3>Dela sökning</h3>
     <div class="copy" @click="copyText">
-      <q-input v-model="url" readonly @focus="selectText" filled color="primary">
+      <q-input v-model="url" readonly @focus="selectText" filled color="primary" class="text-body1">
         <template v-slot:prepend>
           <q-icon name="content_copy" />
         </template>
