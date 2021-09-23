@@ -45,9 +45,15 @@ export default ({
   methods: {
     async runBackendScript () {
       this.$store.dispatch('initSearch')
-      const r = await backend.runBackendScript({ query: this.query, queue: this.queue })
-      console.log(r)
-      this.$store.dispatch('setResponse', r.data)
+      // const r = await backend.runBackendScript({ query: this.query, queue: this.queue })
+      backend.runBackendScript({ query: this.query, queue: this.queue }).then(r => {
+        console.log(r)
+        this.$store.dispatch('setResponse', r.data)
+      }, e => {
+        this.$store.dispatch('initSearch', false)
+        console.log(e)
+      })
+
       // this.$router.replace({ query: { q: this.query } })
     },
     selectText (e) {

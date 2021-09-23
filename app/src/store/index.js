@@ -49,9 +49,9 @@ export default store(function (/* { ssrContext } */) {
           ctx.commit('setState', { key: 'savedItems', value: savedItems })
         }
       },
-      initSearch: (ctx, payload) => {
+      initSearch: (ctx, value = true) => {
         ctx.dispatch('clearResponse')
-        ctx.commit('setState', { key: 'isSearching', value: true })
+        ctx.commit('setState', { key: 'isSearching', value: value })
       },
       setResponse: (ctx, payload) => {
         ctx.commit('setState', { key: 'searchResponse', value: payload })

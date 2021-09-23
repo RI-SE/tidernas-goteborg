@@ -29,9 +29,8 @@ app.get('/hello', (req,res) => {
     res.send('Heal the world!')
 })
 
+// Non-queued api calls
 app.get('/', (req, res) => {
-
-    console.log("Query normal")
 
     const { spawn } = require('child_process');
     const pyProg = spawn('python', ['api.py', req.query.q]);
@@ -39,23 +38,44 @@ app.get('/', (req, res) => {
     pyProg.stdout.on('data', function(data) {
         res.send(data)
     });
+
+    setTimeout(function(){
+        pyProg.kill()
+        res.sendStatus(500)
+    }, 15000);
 })
 
+// Queued api calls
 app.get('/queue', (req, res) => {
-    console.log("Query queue")
-    //res.send('QUEUE')
-    que.add(doSpawn.bind(null, {req:req, res: res}));
+    que.add(doSpawn.bind(null, req.query.q)).then(
+        e => { //WHY IS REJECT FIRST!?
+            //console.log("ERROR", e)
+            res.sendStatus(500)
+        }, r => {  //WHY IS RESOLVE SECOND!?
+            //console.log("RESPONSE",r)
+            res.send(r)
+        }
+    );
 })
 
-function doSpawn (p) {
+function doSpawn (query) {
     var promise = new Promise((reject,resolve) => {
         const { spawn } = require('child_process');
-        const pyProg = spawn('python', ['api.py', p.req.query.q]);
+        const pyProg = spawn('python', ['api.py', query]);
+
+        const timeout = setTimeout(function(){
+            //console.log("TIMEOUT")
+            pyProg.kill()
+            reject()
+        }, 15000);
 
         pyProg.stdout.on('data', function(data) {
-            p.res.send(data)
-            resolve();
+            //console.log("DONE")
+            clearTimeout(timeout)
+            resolve(data);
         });
+
+        
     });
     return promise;
 }
