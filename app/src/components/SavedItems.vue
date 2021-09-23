@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-primary text-white">
+  <div class="">
     <SectionRow>
       <h2 class="text-warning">Sparade objekt</h2>
-      <div v-if="savedItems.length" class="row q-col-gutter-md">
-        <ItemPreview v-for="(item,i) in savedItems" :item="item" :key="i" class="col-xs-12 col-md-4" />
+      <div v-if="savedItems.length" class="col q-col-gutter-md">
+        <ItemPreview v-for="(item,i) in savedItems" :item="item" :key="i" />
       </div>
       <div v-else>
         Klicka på <q-icon name="star" /> för att spara ett objekt.

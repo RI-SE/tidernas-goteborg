@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-form @submit="runBackendScript" class="row q-col-gutter-md">
+    <q-form @submit="runBackendScript">
       <q-input placeholder="Sök" v-model="query" clearable @focus="selectText" class="col text-h2" input-style="q-ma-md" ref="search">
          <template v-slot:prepend>
           <q-icon name="search" />

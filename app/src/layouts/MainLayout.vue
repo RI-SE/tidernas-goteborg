@@ -1,54 +1,50 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="text-warning">
+    <q-header elevated class="text-warning q-pl-lg">
       <q-toolbar>
-        <!--q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        /-->
 
         <!--q-avatar icon="theaters" size="lg" color="white" text-color="primary"/-->
         <!--q-icon name="image" size="lg" /-->
 
-        <q-toolbar-title class="text-bold q-ml-md">
+        <q-toolbar-title class="text-bold">
           Tidernas Göteborg
         </q-toolbar-title>
+        <q-btn
+          flat
+          dense
+          round
+          icon="star"
+          aria-label="Menu"
+          @click="toggleLeftDrawer"
+        />
         <!--div>Quasar v{{ $q.version }}</div-->
 
       </q-toolbar>
     </q-header>
 
-    <!--q-drawer
+    <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      bordered
+      side="right"
+      class="bg-primary text-white"
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer-->
+      <SavedItems />
+    </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer class="q-pa-lg">
+      <MainFooter />
+    </q-footer>
+
   </q-layout>
 </template>
 
 <script>
+import MainFooter from './MainFooter.vue'
+import SavedItems from 'components/SavedItems.vue'
 // import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
@@ -102,7 +98,8 @@ export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    // EssentialLink
+    MainFooter,
+    SavedItems
   },
 
   setup () {

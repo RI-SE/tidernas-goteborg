@@ -1,14 +1,14 @@
 <template>
   <q-page class="row items-stretch">
-    <div class="col-xs-12 col-md-8">
-      <SectionRow class="full-height">
+    <div class="col">
+      <SectionRow>
         <SearchInput class="q-mb-md"/>
         <SearchResult />
       </SectionRow>
     </div>
-    <div class="col-xs-12 col-md-4">
+    <!--div class="col-xs-12 col-md-4">
       <SavedItems class="full-height"/>
-    </div>
+    </div-->
   </q-page>
 </template>
 
@@ -17,15 +17,15 @@
 import SectionRow from 'components/SectionRow'
 import SearchInput from 'components/SearchInput'
 import SearchResult from 'components/SearchResult'
-import SavedItems from 'components/SavedItems'
+// import SavedItems from 'components/SavedItems'
 
 export default ({
   name: 'PageIndex',
   components: {
     SectionRow,
     SearchInput,
-    SearchResult,
-    SavedItems
+    SearchResult
+    // SavedItems
   },
   methods: {
   },
