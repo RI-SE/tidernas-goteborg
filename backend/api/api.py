@@ -1,5 +1,6 @@
 import json
 import sys
+import time
 
 # Do data stuff 
 
@@ -27,6 +28,9 @@ data = {
         }
     ]
 }
+
+# Fake delay to try asynchronity
+# time.sleep(10)
 
 # Print data as JSON
 print(json.dumps(data))
