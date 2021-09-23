@@ -1,14 +1,9 @@
 <template>
-  <q-page class="row items-stretch">
-    <div class="col">
-      <SectionRow>
-        <SearchInput class="q-mb-md"/>
-        <SearchResult />
-      </SectionRow>
-    </div>
-    <!--div class="col-xs-12 col-md-4">
-      <SavedItems class="full-height"/>
-    </div-->
+  <q-page>
+    <SectionRow>
+      <SearchInput class="q-mb-md"/>
+      <SearchResult />
+    </SectionRow>
   </q-page>
 </template>
 

@@ -7,7 +7,9 @@
         <!--q-icon name="image" size="lg" /-->
 
         <q-toolbar-title class="text-bold">
-          Tidernas Göteborg
+          <router-link :to="{name: 'Home'}" class="text-warning">
+            Tidernas Göteborg
+          </router-link>
         </q-toolbar-title>
         <q-btn
           flat
@@ -35,7 +37,7 @@
       <router-view />
     </q-page-container>
 
-    <q-footer class="q-pa-lg">
+    <q-footer class="q-pa-xs q-pl-lg q-pr-lg">
       <MainFooter />
     </q-footer>
 

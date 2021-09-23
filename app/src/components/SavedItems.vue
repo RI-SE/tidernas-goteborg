@@ -6,7 +6,9 @@
         <ItemPreview v-for="(item,i) in savedItems" :item="item" :key="i" />
       </div>
       <div v-else>
-        Klicka på <q-icon name="star" /> för att spara ett objekt.
+        <p>
+          Sök och klicka på <q-icon name="star" /> för att spara ett objekt.
+        </p>
       </div>
     </SectionRow>
   </div>

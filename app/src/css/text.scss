@@ -41,6 +41,10 @@ a {
     color: $primary;
 }
 
+a.dark {
+    color: white;
+}
+
 a:hover {
     text-decoration: underline;
 }
