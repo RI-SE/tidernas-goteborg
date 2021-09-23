@@ -49,31 +49,35 @@ app.get('/', (req, res) => {
 
 // Queued api calls
 app.get('/queue', (req, res) => {
-    que.add(doSpawn.bind(null, req.query.q)).then(
+    que.add(doSpawn.bind(null, {req, res})).then(
         e => { //WHY IS REJECT FIRST!?
             //console.log("ERROR", e)
-            res.sendStatus(500)
         }, r => {  //WHY IS RESOLVE SECOND!?
             //console.log("RESPONSE",r)
-            res.send(r)
         }
     );
+
+    // TODO?
+    // Another timeout checking if the total api call takes too long. 
+
 })
 
-function doSpawn (query) {
+function doSpawn (p) {
     var promise = new Promise((reject,resolve) => {
         const { spawn } = require('child_process');
-        const pyProg = spawn('python', ['api.py', query]);
+        const pyProg = spawn('python', ['api.py', p.req.query.q]);
 
         const timeout = setTimeout(function(){
-            //console.log("TIMEOUT")
+            console.log("TIMEOUT")
             pyProg.kill()
+            p.res.sendStatus(500)
             reject()
         }, 15000);
 
         pyProg.stdout.on('data', function(data) {
-            //console.log("DONE")
+            console.log("DONE")
             clearTimeout(timeout)
+            p.res.send(data)
             resolve(data);
         });
 
