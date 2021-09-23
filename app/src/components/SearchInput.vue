@@ -1,10 +1,9 @@
 <template>
   <div>
-    <h2>Sök</h2>
     <q-form @submit="runBackendScript" class="row q-col-gutter-md">
-      <q-input label="Sökterm" v-model="query" clearable @focus="selectText" class="col">
-         <template v-slot:append>
-          <q-icon v-if="!query" name="search" />
+      <q-input placeholder="Sök" v-model="query" clearable @focus="selectText" class="col text-h2" input-style="q-ma-md" ref="search">
+         <template v-slot:prepend>
+          <q-icon name="search" />
         </template>
       </q-input>
       <!--q-btn type="submit" label="Sök" /-->
@@ -13,6 +12,8 @@
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
 
 import backend from '../js/backend-utils.js'
 
@@ -28,18 +29,27 @@ export default ({
   props: {
   },
   computed: {
+    ...mapState(['searchResponse'])
+  },
+  watch: {
+    searchResponse (val) {
+      if (!Object.keys(val).length) {
+        this.$refs.search.$el.focus()
+      }
+    }
   },
   methods: {
     async runBackendScript () {
       const r = await backend.runBackendScript({ query: this.query })
       this.$store.commit('setState', { key: 'searchResponse', value: r.data })
-      this.$router.replace({ query: { q: this.query } })
+      // this.$router.replace({ query: { q: this.query } })
     },
     selectText (e) {
       e.target.select()
     }
   },
   mounted () {
+    this.$refs.search.$el.focus()
     if (this.$route.query.q) {
       this.query = this.$route.query.q
       this.runBackendScript()

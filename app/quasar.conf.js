@@ -29,7 +29,7 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: [
       'app.scss',
-      'text.css'
+      'text.scss'
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
@@ -101,7 +101,7 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Notify']
     },
 
     // animations: 'all', // --- includes all animations

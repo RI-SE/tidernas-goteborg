@@ -12,7 +12,7 @@
         /-->
 
         <!--q-avatar icon="theaters" size="lg" color="white" text-color="primary"/-->
-        <q-icon name="theaters" size="lg" />
+        <q-icon name="image" size="lg" />
 
         <q-toolbar-title>
           Tidernas Göteborg

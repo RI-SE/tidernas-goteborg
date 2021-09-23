@@ -2,7 +2,7 @@
   <div>
     <q-card>
       <q-item>
-        <q-icon name="star" @click="saveItem" :color="isSaved ? 'yellow' : 'grey'" size="md" class="absolute-top-right pointer"/>
+        <q-icon name="star" @click="saveItem" :color="isSaved ? 'warning' : 'grey'" size="md" class="absolute-top-right save"/>
       </q-item>
       <q-card-section>
         {{item}}
@@ -41,3 +41,14 @@ export default ({
   }
 })
 </script>
+
+<style lang="scss">
+  .save {
+    cursor: pointer !important;
+  }
+
+  .save:hover {
+    opacity: 70%;
+  }
+
+</style>

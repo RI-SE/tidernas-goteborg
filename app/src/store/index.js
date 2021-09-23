@@ -47,6 +47,9 @@ export default store(function (/* { ssrContext } */) {
         if (savedItems) {
           ctx.commit('setState', { key: 'savedItems', value: savedItems })
         }
+      },
+      clearResponse: (ctx) => {
+        ctx.commit('setState', { key: 'searchResponse', value: {} })
       }
     }
   })
