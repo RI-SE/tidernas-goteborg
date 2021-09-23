@@ -1,9 +1,9 @@
 <template>
   <div class="bg-primary">
     <SectionRow>
-      <h2>Sparade resultat</h2>
+      <h2>Sparade objekt</h2>
       <div class="row q-col-gutter-md">
-        <SearchResult v-for="(r,i) in savedResults" :result="r" :key="i" class="col-4" />
+        <ItemPreview v-for="(item,i) in savedItems" :item="item" :key="i" class="col-4" />
       </div>
     </SectionRow>
   </div>
@@ -14,13 +14,13 @@
 import { mapState } from 'vuex'
 
 import SectionRow from 'components/SectionRow'
-import SearchResult from 'components/SearchResult'
+import ItemPreview from 'components/ItemPreview'
 
 export default ({
-  name: 'Search',
+  name: 'SavedItems',
   components: {
     SectionRow,
-    SearchResult
+    ItemPreview
   },
   data: function () {
     return {
@@ -30,7 +30,7 @@ export default ({
     result: Object
   },
   computed: {
-    ...mapState(['savedResults'])
+    ...mapState(['savedItems'])
   },
   methods: {
   }

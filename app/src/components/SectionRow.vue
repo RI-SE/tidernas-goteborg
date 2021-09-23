@@ -1,5 +1,5 @@
 <template>
-  <div class="SectionRow row flex-center">
+  <div class="SectionRow row justify-center">
     <div class="col-10">
       <slot/>
     </div>

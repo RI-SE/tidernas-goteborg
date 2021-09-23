@@ -1,31 +1,32 @@
 <template>
   <q-page class="row items-stretch">
-    <div class="col-8">
+    <div class="col">
       <SectionRow class="full-height">
         <SearchInput />
-        <SearchResult />
+        <h3>API response:</h3>
+        <pre>
+          {{searchResponse}}
+        </pre>
       </SectionRow>
-    </div>
-    <div class="col-4">
-      <SavedItems class="full-height"/>
     </div>
   </q-page>
 </template>
 
 <script>
 
+import { mapState } from 'vuex'
+
 import SectionRow from 'components/SectionRow'
 import SearchInput from 'components/SearchInput'
-import SearchResult from 'components/SearchResult'
-import SavedItems from 'components/SavedItems'
 
 export default ({
   name: 'PageIndex',
   components: {
     SectionRow,
-    SearchInput,
-    SearchResult,
-    SavedItems
+    SearchInput
+  },
+  computed: {
+    ...mapState(['searchResponse'])
   },
   methods: {
   },

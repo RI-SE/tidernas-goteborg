@@ -1,13 +1,12 @@
 <template>
   <div>
-    <q-card>
-      <q-item>
-        <q-icon name="star" @click="saveResult" :color="isSaved ? 'yellow' : 'grey'" size="md" class="absolute-top-right pointer"/>
-      </q-item>
-      <q-card-section>
-        {{result}}
-      </q-card-section>
-    </q-card>
+    <h2><span class="text-thin text-grey">Toppträffar för:</span> {{searchResponse.query}}</h2>
+    <!--pre>
+      {{searchResponse}}
+    </pre-->
+    <div class="row q-col-gutter-md">
+      <ItemPreview v-for="(item,i) in searchResponse.items" :item="item" :key="i" />
+    </div>
   </div>
 </template>
 
@@ -15,35 +14,25 @@
 
 import { mapState } from 'vuex'
 
-import backend from '../js/backend-utils.js'
+import ItemPreview from 'components/ItemPreview'
 
 export default ({
-  name: 'Search',
+  name: 'SearchResult',
+  components: {
+    ItemPreview
+  },
   data: function () {
     return {
+      query: ''
+      // queryResponse: {}
     }
   },
   props: {
-    result: Object
   },
   computed: {
-    ...mapState(['savedResults']),
-    isSaved () {
-      return this.savedResults.filter(r => r.id === this.result.id).length > 0
-    }
+    ...mapState(['searchResponse'])
   },
   methods: {
-    async runBackendScript () {
-      const r = await backend.runBackendScript({ query: this.query })
-      console.log(r.data)
-    },
-    saveResult () {
-      if (!this.isSaved) {
-        this.$store.commit('addSavedResult', { result: this.result })
-      } else {
-        this.$store.commit('removeSavedResult', { result: this.result })
-      }
-    }
   }
 })
 </script>

@@ -22,29 +22,30 @@ export default store(function (/* { ssrContext } */) {
     // for dev mode and --debug builds only
     strict: process.env.DEBUGGING,
     state: {
-      savedResults: []
+      searchResponse: {},
+      savedItems: []
     },
     mutations: {
       setState: (state, payload) => {
         state[payload.key] = payload.value
-        // Vue.set(state, payload.key, payload.value)
       },
-      addSavedResult: (state, payload) => {
-        state.savedResults.push(payload.result)
-        sessionStorage.setItem('savedResults', JSON.stringify(state.savedResults))
+      addSavedItem: (state, payload) => {
+        console.log(payload.item)
+        state.savedItems.push(payload.item)
+        sessionStorage.setItem('savedItems', JSON.stringify(state.savedItems))
       },
-      removeSavedResult: (state, payload) => {
-        const index = state.savedResults.findIndex(r => r.id === payload.result.id)
+      removeSavedItem: (state, payload) => {
+        const index = state.savedItems.findIndex(r => r.id === payload.item.id)
         if (index !== -1) {
-          state.savedResults.splice(index, 1)
+          state.savedItems.splice(index, 1)
         }
       }
     },
     actions: {
       init: (ctx, payload) => {
-        const savedResults = JSON.parse(sessionStorage.getItem('savedResults'))
-        if (savedResults) {
-          ctx.commit('setState', { key: 'savedResults', value: savedResults })
+        const savedItems = JSON.parse(sessionStorage.getItem('savedItems'))
+        if (savedItems) {
+          ctx.commit('setState', { key: 'savedItems', value: savedItems })
         }
       }
     }
