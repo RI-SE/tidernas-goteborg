@@ -9,8 +9,9 @@ const config = {
 
 const runBackendScript = async (params) => {
   try {
+    const route = params.queue ? '/queue' : ''
     const response = await axios.get(
-      config.url + '?q=' + params.query,
+      config.url + route + '?q=' + params.query,
       {
         headers: {
           'Content-Type': 'application/json'

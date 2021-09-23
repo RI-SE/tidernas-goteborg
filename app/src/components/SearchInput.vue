@@ -6,6 +6,9 @@
           <q-icon name="search" />
         </template>
       </q-input>
+      <div class="text-center">
+        Developer test: <q-toggle v-model="queue" label="API kö aktiv"/>
+      </div>
       <!--q-btn type="submit" label="Sök" /-->
     </q-form>
   </div>
@@ -23,7 +26,8 @@ export default ({
   },
   data: function () {
     return {
-      query: ''
+      query: '',
+      queue: false
     }
   },
   props: {
@@ -41,7 +45,8 @@ export default ({
   methods: {
     async runBackendScript () {
       this.$store.dispatch('initSearch')
-      const r = await backend.runBackendScript({ query: this.query })
+      const r = await backend.runBackendScript({ query: this.query, queue: this.queue })
+      console.log(r)
       this.$store.dispatch('setResponse', r.data)
       // this.$router.replace({ query: { q: this.query } })
     },
