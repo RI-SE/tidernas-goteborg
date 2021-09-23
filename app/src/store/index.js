@@ -39,6 +39,7 @@ export default store(function (/* { ssrContext } */) {
         if (index !== -1) {
           state.savedItems.splice(index, 1)
         }
+        sessionStorage.setItem('savedItems', JSON.stringify(state.savedItems))
       }
     },
     actions: {
