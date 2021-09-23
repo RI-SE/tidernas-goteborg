@@ -35,14 +35,16 @@ app.get('/', (req, res) => {
     const { spawn } = require('child_process');
     const pyProg = spawn('python', ['api.py', req.query.q]);
 
-    pyProg.stdout.on('data', function(data) {
-        res.send(data)
-    });
-
-    setTimeout(function(){
+    const timeout = setTimeout(function(){
         pyProg.kill()
         res.sendStatus(500)
     }, 15000);
+    
+    pyProg.stdout.on('data', function(data) {
+        clearTimeout(timeout)
+        res.send(data)
+    });
+
 })
 
 // Queued api calls
