@@ -30,7 +30,7 @@ data = {
 }
 
 # Fake delay to try asynchronity
-# time.sleep(10)
+time.sleep(5)
 
 # Print data as JSON
 print(json.dumps(data))
