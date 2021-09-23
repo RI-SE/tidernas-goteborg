@@ -6,7 +6,7 @@ import sys
 # Compose return object
 data = {
     "query": sys.argv[1],
-    "results": [
+    "items": [
         {
             "id": "imgPath1"
         },
