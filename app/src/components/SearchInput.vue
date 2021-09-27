@@ -6,9 +6,9 @@
           <q-icon name="search" />
         </template>
       </q-input>
-      <div class="text-center">
+      <!--div class="text-center">
         <q-toggle v-model="queue" label="API kö test"/>
-      </div>
+      </div-->
       <!--q-btn type="submit" label="Sök" /-->
     </q-form>
   </div>
@@ -27,7 +27,7 @@ export default ({
   data: function () {
     return {
       query: '',
-      queue: false
+      queue: true
     }
   },
   props: {
