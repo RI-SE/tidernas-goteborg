@@ -19,7 +19,7 @@
         </p>
         <div class="row">
           <MetaChip :field="meta.Datering" icon="schedule" />
-          <MetaChip :field="meta.Typ" icon="attachment" />
+          <!--MetaChip :field="meta.Typ" icon="attachment" /-->
           <MetaChip :field="meta.Material" icon="construction" />
         </div>
         <p v-if="meta.Beskrivning" class="ellipsis">
