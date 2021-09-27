@@ -24,7 +24,8 @@ export default store(function (/* { ssrContext } */) {
     state: {
       isSearching: false,
       searchResponse: {},
-      savedItems: []
+      savedItems: [],
+      selectedItem: null
     },
     mutations: {
       setState: (state, payload) => {
@@ -59,6 +60,9 @@ export default store(function (/* { ssrContext } */) {
       },
       clearResponse: (ctx) => {
         ctx.commit('setState', { key: 'searchResponse', value: {} })
+      },
+      selectItem: (ctx, payload) => {
+        ctx.commit('setState', { key: 'selectedItem', value: payload.item })
       }
     }
   })

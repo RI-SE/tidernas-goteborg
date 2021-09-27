@@ -3,7 +3,7 @@
     <SectionRow>
       <h2 class="text-warning">Sparade objekt</h2>
       <div v-if="savedItems.length" class="col q-col-gutter-md">
-        <ItemPreview v-for="(item,i) in savedItems" :item="item" :key="i" />
+        <ItemPreview v-for="(item,i) in savedItems" :item="item" :key="i" :mini="true"/>
       </div>
       <div v-else>
         <p>

@@ -37,9 +37,9 @@ export default ({
   },
   watch: {
     searchResponse (val) {
-      if (!Object.keys(val).length) {
+      /* if (!Object.keys(val).length) {
         this.$refs.search.$el.focus()
-      }
+      } */
     }
   },
   methods: {
@@ -47,8 +47,7 @@ export default ({
       this.$store.dispatch('initSearch')
       // const r = await backend.runBackendScript({ query: this.query, queue: this.queue })
       backend.runBackendScript({ query: this.query, queue: this.queue }).then(r => {
-        console.log(r)
-        this.$store.dispatch('setResponse', r.data)
+        this.$store.dispatch('setResponse', { query: this.query, items: { ...r.data } })
       }, e => {
         this.$store.dispatch('initSearch', false)
         console.log(e)
