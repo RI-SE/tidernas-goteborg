@@ -53,7 +53,7 @@ export default ({
   computed: {
     ...mapState(['savedItems']),
     isSaved () {
-      return this.savedItems.filter(i => i === this.item).length > 0
+      return this.savedItems.filter(i => i['Image-Link'] === this.item['Image-Link']).length > 0
     },
     meta () {
       return this.item.Metadata
