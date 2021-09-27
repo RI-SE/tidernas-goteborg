@@ -33,12 +33,12 @@ app.get('/hello', (req,res) => {
 app.get('/', (req, res) => {
 
     const { spawn } = require('child_process');
-    const pyProg = spawn('python', ['api.py', req.query.q]);
+    const pyProg = spawn('python', ['../../../Riksarkivet/Backend/api.py', '--query', req.query.q]);
 
     const timeout = setTimeout(function(){
         pyProg.kill()
         res.sendStatus(500)
-    }, 15000);
+    }, 5000);
     
     pyProg.stdout.on('data', function(data) {
         clearTimeout(timeout)
@@ -65,14 +65,14 @@ app.get('/queue', (req, res) => {
 function doSpawn (p) {
     var promise = new Promise((reject,resolve) => {
         const { spawn } = require('child_process');
-        const pyProg = spawn('python', ['api.py', p.req.query.q]);
+        const pyProg = spawn('python', ['~/Riksarkivet/backend/apiTest.py', '--query', p.req.query.q]);
 
         const timeout = setTimeout(function(){
             //console.log("TIMEOUT")
             pyProg.kill()
             p.res.sendStatus(500)
             reject()
-        }, 15000);
+        }, 5000);
 
         pyProg.stdout.on('data', function(data) {
             //console.log("DONE")
