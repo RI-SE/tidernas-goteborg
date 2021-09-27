@@ -14,6 +14,9 @@
               <q-icon name="star" @click="saveItem" :color="isSaved ? 'warning' : 'grey'" size="md" class="save"/>
             </div>
           </div>
+          <p v-if="meta.Källa" class="text-grey-8">
+            {{meta.Källa}}
+          </p>
           <q-separator class="q-ma-md"/>
           <div>
             <div v-for="(m,i) in Object.keys(meta)" :key="i">

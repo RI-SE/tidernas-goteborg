@@ -14,7 +14,7 @@
             <q-icon name="star" @click.stop="saveItem" :color="isSaved ? 'warning' : 'grey'" size="md" class="save"/>
           </div>
         </div>
-        <p v-if="meta.Källa">
+        <p v-if="meta.Källa" class="text-grey-8">
           {{meta.Källa}}
         </p>
         <div class="row">
