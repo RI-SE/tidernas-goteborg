@@ -83,10 +83,12 @@ export default ({
   .ItemPreview{
     cursor: pointer;
     transition: all 0.25s;
+    border: 1px solid transparent;
   }
 
   .ItemPreview:hover{
-    box-shadow: 3px 3px 3px rgba(black,0.25);
+    //box-shadow: 3px 3px 3px rgba(black,0.25);
+    border: 1px solid grey;
   }
 
   .save {
