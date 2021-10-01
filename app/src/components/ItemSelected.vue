@@ -20,8 +20,8 @@
           </p>
           <q-separator class="q-ma-md"/>
           <div>
-            <div v-for="(m,i) in Object.keys(meta)" :key="i">
-              <strong>{{m}}</strong>: {{meta[m]}}
+            <div v-for="(m,i) in Object.keys(meta)" :key="i" class="q-mb-sm">
+              <strong>{{m}}</strong>: <span class="break">{{meta[m]}}</span>
             </div>
           </div>
         </q-card-section>
@@ -91,6 +91,10 @@ export default ({
 
   .save:hover {
     opacity: 70%;
+  }
+
+  .break {
+    word-break: break-all;
   }
 
 </style>

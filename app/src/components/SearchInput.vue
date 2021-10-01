@@ -37,9 +37,9 @@ export default ({
   },
   watch: {
     searchResponse (val) {
-      /* if (!Object.keys(val).length) {
+      if (!Object.keys(val).length) {
         this.$refs.search.$el.focus()
-      } */
+      }
     }
   },
   methods: {
