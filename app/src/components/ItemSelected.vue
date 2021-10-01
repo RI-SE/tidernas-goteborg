@@ -21,7 +21,7 @@
           <q-separator class="q-ma-md"/>
           <div>
             <div v-for="(m,i) in Object.keys(meta)" :key="i" class="q-mb-sm">
-              <strong>{{m}}</strong>: <span class="break">{{meta[m]}}</span>
+              <strong>{{m}}</strong>: <span :class="{'break': m === 'Kringla-Url'}">{{meta[m]}}</span>
             </div>
           </div>
         </q-card-section>
