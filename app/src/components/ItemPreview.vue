@@ -2,7 +2,7 @@
 <div>
   <q-card class="ItemPreview" @click="selectItem">
 
-    <q-img :src="item['Image-Link']" :ratio="16/9" :fit="mini ? 'cover' : 'contain'" :alt="meta.Motiv" :title="meta.Motiv" />
+    <q-img :src="item['Image-Link']" :ratio="4/3" :fit="mini ? 'cover' : 'contain'" :alt="meta.Motiv" :title="meta.Motiv" />
     <div v-if="!mini">
       <q-separator />
       <q-card-section>
