@@ -10,8 +10,9 @@
             <h3 class="col q-ma-none">
               {{item.Title}}
             </h3>
-            <div>
-              <q-icon name="star" @click="saveItem" :color="isSaved ? 'warning' : 'grey'" size="md" class="save"/>
+            <div class="row q-gutter-xs q-ml-xs">
+              <q-icon name="open_in_new" @click.stop="open" color="grey" size="sm" class="save"/>
+              <q-icon :name="isSaved ? 'star' : 'star_border'" @click.stop="saveItem" :color="isSaved ? 'warning' : 'grey'" size="sm" class="save"/>
             </div>
           </div>
           <p v-if="meta.Källa" class="text-grey-8">
@@ -75,6 +76,9 @@ export default ({
       } else {
         this.$store.commit('removeSavedItem', { item: this.item })
       }
+    },
+    open () {
+      window.open(this.meta['Kringla-Url'], '_blank')
     }
   }
 })
